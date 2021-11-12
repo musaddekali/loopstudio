@@ -1,0 +1,49 @@
+@use '../utils' as *;
+/* ------- About ------- */
+.about {
+  padding-top: 190px;
+
+  &-image {
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &-text {
+    margin-left: -167px;
+    margin-top: 184px;
+    background: #fff;
+    padding: 98px 0 98px 98px;
+
+    @include breakpoint-down('md') {
+      margin: 94px 0 0 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 400;
+      margin-bottom: 50px;
+      padding: 0;
+      letter-spacing: 2px;
+      line-height: 1;
+      @include breakpoint-down('md') {
+        margin-bottom: 60px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 0;
+      line-height: 28px;
+
+      @include breakpoint-down('md') {
+        font-size: 20px;
+        color: $very-dark-gray;
+      }
+    }
+  }
+}

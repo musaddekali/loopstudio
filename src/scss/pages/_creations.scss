@@ -1,0 +1,127 @@
+@use '../utils' as *;
+/* ------- Creations ------- */
+.crs {
+  padding-top: 190px;
+
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+    @include breakpoint-down('md') {
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 400;
+      line-height : 1;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  &-mobile-cta{
+    margin-top: 66px;
+    text-align: center;
+  }
+
+  &-cta {
+    padding: 16px 40px;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1;
+    border-radius: 2px;
+    color: #000;
+    border: 1px solid #000;
+    @include transition;
+    letter-spacing: 1.5px;
+
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
+  }
+
+  &-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+
+    @include breakpoint-down("md") {
+      grid-template-columns: 1fr;
+      grid-gap: 40px;
+    }
+  }
+
+  &-item {
+    .image {
+      object-fit: cover;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($dark-gray, 0.8);
+        opacity: 0;
+        pointer-events: none;
+        @include transition;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      img.hide-in-mobile {
+        @include breakpoint-down("md") {
+          display: none;
+        }
+      }
+
+      img.hide-in-desktop {
+        @include breakpoint-up("md") {
+          display: none;
+        }
+      }
+
+      .desc {
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 300;
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        line-height: 1.25;
+        font-size: 24px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        @include transition;
+
+        @include breakpoint-down('md') {
+            bottom: unset;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+      }
+    }
+
+    &:hover .image::before {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &:hover .desc {
+        color: #000;
+    }
+  }
+}

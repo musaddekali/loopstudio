@@ -1,0 +1,17 @@
+.header {
+    font-family: Arial, Helvetica, sans-serif;
+    top: 60px;
+    transition: 0.5s;
+
+    &-scrolled {
+        padding: 10px 0;
+        top: -80px;
+        background: #000;
+    }
+
+    &-active {
+        top: 0;
+    }
+ 
+
+}

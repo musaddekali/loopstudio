@@ -1,0 +1,102 @@
+@use '../utils' as *;
+
+/* ------- Navigation ------- */
+/* Desktop  */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+      color: #fff;
+      @include breakpoint-down("md") {
+        font-size: 40px;
+      }
+    }
+  }
+
+  &-toggler {
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    li {
+      margin: 15px 16px;
+
+      a {
+        font-size: 15px;
+        font-weight: 600;
+        display: block;
+        color: #fff;
+        position: relative;
+
+        &::before {
+          content: "";
+          width: 25px;
+          height: 2px;
+          background: #fff;
+          position: absolute;
+          bottom: -15px;
+          left: 50%;
+          transform: translateX(-50%);
+          @include transition;
+          visibility: hidden;
+          opacity: 0;
+        }
+
+        &:hover::before {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile  */
+
+@include breakpoint-down("md") {
+  .nav-menu {
+      
+    ul {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      right: 0;
+      background: #000;
+      flex-direction: column;
+      padding: 40px 0;
+      padding-top: 40vh;
+      overflow-y: auto;
+      z-index: -1;
+      top: -100%;
+      @include transition;
+
+      &.open {
+          top: 0;
+      }
+
+      li {
+        margin: 0 0 60px;
+
+        a {
+          font-size: 34px;
+          font-weight: 400;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
